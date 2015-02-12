@@ -452,4 +452,30 @@ config BR2_ROOTFS_POST_SCRIPT_ARGS
 	  directory / images directory. The arguments in this option will be
 	  passed *after* those.
 
+config BR2_TARGET_MEDIA_GENIMAGE_CFG
+	string "genimage config files to prepare media images"
+	default ""
+	help
+	  Specify a space-separated list of configuration files for genimage
+	  to be run after the build has finished and after Buildroot has
+	  packed the files into selected filesystem images.
+
+	  This can for example be used to generate an SD card image with a
+	  vfat boot partition and a ext4 rootfs, or a flash image with
+	  bootloader and kernel at specific offsets.
+
+	  genimage is executed from the main Buildroot source directory,
+	  with input and output paths configured to output/images.
+
+	  The genimage documentation is located at:
+	  http://git.pengutronix.de/?p=genimage.git;a=blob_plain;f=README.
+
+config BR2_TARGET_MEDIA_GENIMAGE_HOST_DEPENDENCIES
+	bool "genimage host dependencies"
+	default y
+	depends on BR2_TARGET_MEDIA_GENIMAGE_CFG != ""
+	select BR2_PACKAGE_HOST_GENIMAGE
+	select BR2_PACKAGE_HOST_DOSFSTOOLS
+	select BR2_PACKAGE_HOST_MTOOLS
+
 endmenu

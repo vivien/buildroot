@@ -430,11 +430,11 @@ $(BUILD_DIR)/buildroot-config/auto.conf: $(BR2_CONFIG)
 
 prepare: $(BUILD_DIR)/buildroot-config/auto.conf
 
-world: target-post-image
+world: target-media-image
 
 .PHONY: all world toolchain dirs clean distclean source outputmakefile \
 	legal-info legal-info-prepare legal-info-clean printvars \
-	target-finalize target-post-image \
+	target-finalize target-post-image target-media-image \
 	$(TARGETS) $(TARGETS_ROOTFS) \
 	$(TARGETS_DIRCLEAN) $(TARGETS_SOURCE) $(TARGETS_LEGAL_INFO) \
 	$(BUILD_DIR) $(STAGING_DIR) $(TARGET_DIR) \
@@ -625,6 +625,11 @@ target-post-image: $(TARGETS_ROOTFS) target-finalize
 	@$(foreach s, $(call qstrip,$(BR2_ROOTFS_POST_IMAGE_SCRIPT)), \
 		$(call MESSAGE,"Executing post-image script $(s)"); \
 		$(EXTRA_ENV) $(s) $(BINARIES_DIR) $(call qstrip,$(BR2_ROOTFS_POST_SCRIPT_ARGS))$(sep))
+
+target-media-image: target-post-image
+	@$(foreach cfg, $(call qstrip,$(BR2_TARGET_MEDIA_GENIMAGE_CFG)), \
+		$(call MESSAGE,"Generating media image from $(cfg)"); \
+		$(EXTRA_ENV) support/media/genimage $(cfg)$(sep))
 
 source: $(TARGETS_SOURCE) $(HOST_SOURCE)
 

@@ -23,6 +23,8 @@ Typical actions you may need to perform for a given project are:
 * adding custom user accounts (using +BR2_ROOTFS_USERS_TABLES+)
 * running arbitrary commands after generating the filesystem image
   (using +BR2_ROOTFS_POST_IMAGE_SCRIPT+)
+* defining media image(s) to generate at the end of the process (using
+  +BR2_TARGET_MEDIA_IMAGE_GENIMAGE_CFG+)
 * adding project-specific patches to some packages (using
   +BR2_GLOBAL_PATCH_DIR+)
 * adding project-specific packages
@@ -52,6 +54,8 @@ include::customize-rootfs.txt[]
 include::customize-users-tables.txt[]
 
 include::customize-post-image.txt[]
+
+include::customize-media-image.txt[]
 
 include::customize-patches.txt[]
 

@@ -1,0 +1,36 @@
+// -*- mode:doc; -*-
+// vim: set syntax=asciidoc:
+
+=== Media image generation
+
+*Media image generation* allows to define final images for medium such 
+as disk, SD card or flash, _after_ filesystem images, kernel and 
+bootloader have been created, and eventually tweaked by custom scripts 
+(xref:_customization_emphasis_after_emphasis_the_images_have_been_created[]).
+
+Image generation completes the build process and can for example be used 
+to define a fully bootable image (including partition layout, with the 
+bootloader, some firmware files, a kernel and rootfs, at specific 
+offsets, etc.), ready to be dumped on a boot medium.
+
+Actually, the host tool used to generate this image is *genimage*. It
+allows complex definitions as described above, through a convenient
+syntax. The genimage documentation is located at:
+http://git.pengutronix.de/?p=genimage.git;a=blob_plain;f=README.
+
+To enable this feature, specify a space-separated list of genimage 
+config files in config option +BR2_TARGET_MEDIA_GENIMAGE_CFG+ (in the 
++System configuration+ menu). You may indeed want to split the 
+configuration for the different partitions and final image(s). If you 
+specify a relative path, it will be relative to the root of the 
+Buildroot tree.
+
+You can find several examples of genimage configuration, by searching 
+for +BR2_TARGET_MEDIA_GENIMAGE_CFG+ in the +configs+ directory.
+
+Just like post-build and post-image scripts, genimage is run with the
+main Buildroot tree as current working directory. The genimage input and
+output directory are configured to the path of the Buildroot +images+
+output directory. This means that rootfs or others images can be
+specified relative to this directory, and generated media images will be 
+copied there.

@@ -1,0 +1,23 @@
+#!/usr/bin/env bash
+
+# We want to catch any unexpected failure, and exit immediately
+set -e
+
+# Media image generation helper for genimage
+#
+# Call it as:
+#   .../genimage GENIMAGE_CFG
+
+GENIMAGE_CFG="${1}"
+GENIMAGE_DIR="$(mktemp -d output/.genimage.XXXXXXXXXX)"
+
+mkdir -p "${GENIMAGE_DIR}"/{root,tmp}
+
+"${HOST_DIR}/usr/bin/genimage" \
+    --rootpath "${GENIMAGE_DIR}/root" \
+    --tmppath "${GENIMAGE_DIR}/tmp" \
+    --inputpath "${BINARIES_DIR}" \
+    --outputpath "${BINARIES_DIR}" \
+    --config "${GENIMAGE_CFG}"
+
+rm -rf "${GENIMAGE_DIR}"
