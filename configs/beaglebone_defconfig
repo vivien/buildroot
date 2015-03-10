@@ -40,3 +40,6 @@ BR2_LINUX_KERNEL_CUSTOM_CONFIG_FILE="board/beaglebone/linux-3.12.config"
 BR2_LINUX_KERNEL_ZIMAGE=y
 BR2_LINUX_KERNEL_DTS_SUPPORT=y
 BR2_LINUX_KERNEL_INTREE_DTS_NAME="am335x-bone am335x-boneblack"
+
+# image generation
+BR2_TARGET_MEDIA_GENIMAGE_CFG="board/beaglebone/genimage.cfg"
