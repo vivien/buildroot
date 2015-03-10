@@ -2,7 +2,8 @@ Minimal board support for the Wandboard
 
 Wandboard's homepage is here: http://www.wandboard.org/
 
-This config is only tested with the dual core wandboard.
+Note: Buildroot already prepared an "sdcard.img" image ready to boot, but this 
+document explains how to do it manually.
 
 Installing:
 
