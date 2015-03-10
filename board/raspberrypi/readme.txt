@@ -16,6 +16,9 @@ Buildroot, you have to choose whether you will use:
 
 Also, a good source of information is http://elinux.org/R-Pi_Hub
 
+Note: Buildroot already prepared an "sdcard.img" image for a persistent
+rootfs, but this document explains how to do it manually.
+
 How to build it
 ===============
 
@@ -61,6 +64,7 @@ After building, you should obtain this tree:
 
     output/images/
     +-- rootfs.tar                              [0]
+    +-- rootfs.ext4                             [0]
     +-- rpi-firmware/
     |   +-- bcm2708-rpi-b.dtb
     |   +-- bcm2708-rpi-b-plus.dtb
@@ -71,8 +75,9 @@ After building, you should obtain this tree:
     |   `-- start.elf
     `-- zImage
 
-[0] Note for Volatile: rootfs.tar will only be there if you kept
-    "tar the root filesystem" option selected in "Filesystem images".
+[0] Note for Volatile: rootfs.tar and rootfs.ext4 will only be there if
+    you kept "tar the root filesystem" and "ext2/3/4 root filesystem"
+    options selected in "Filesystem images".
 
 Prepare you SDCard
 ==================
