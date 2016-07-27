@@ -1,0 +1,7 @@
+config BR2_PACKAGE_MSTPD
+	bool "mstpd"
+	help
+	  Multiple Spanning Tree Protocol daemon.
+	  msptd implements the IEEE 802.1s Multiple Spanning Tree Protocol.
+
+	  https://sourceforge.net/projects/mstpd/
