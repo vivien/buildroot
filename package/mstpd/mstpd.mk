@@ -17,4 +17,9 @@ define MSTPD_INSTALL_TARGET_CMDS
 	$(MAKE) -C $(@D) DESTDIR="$(TARGET_DIR)" install
 endef
 
+define MSTPD_INSTALL_INIT_SYSV
+	$(INSTALL) -D -m 0755 package/mstpd/S60mstpd \
+		$(TARGET_DIR)/etc/init.d/S60mstpd
+endef
+
 $(eval $(generic-package))
