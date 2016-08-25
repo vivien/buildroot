@@ -1,0 +1,67 @@
+auto lo
+iface lo inet loopback
+
+auto eth0
+iface eth0 inet static
+      address 10.0.0.2
+      netmask 255.0.0.0
+
+auto eth1
+iface eth1 inet manual
+    pre-up ifconfig $IFACE up
+    post-down ifconfig $IFACE down
+
+auto lan0
+iface lan0 inet manual
+    pre-up ifconfig $IFACE up
+    post-down ifconfig $IFACE down
+
+auto lan1
+iface lan1 inet manual
+    pre-up ifconfig $IFACE up
+    post-down ifconfig $IFACE down
+
+auto lan2
+iface lan2 inet manual
+    pre-up ifconfig $IFACE up
+    post-down ifconfig $IFACE down
+
+auto lan3
+iface lan3 inet manual
+    pre-up ifconfig $IFACE up
+    post-down ifconfig $IFACE down
+
+auto lan4
+iface lan4 inet manual
+    pre-up ifconfig $IFACE up
+    post-down ifconfig $IFACE down
+
+auto lan5
+iface lan5 inet manual
+    pre-up ifconfig $IFACE up
+    post-down ifconfig $IFACE down
+
+auto lan6
+iface lan6 inet manual
+    pre-up ifconfig $IFACE up
+    post-down ifconfig $IFACE down
+
+auto lan7
+iface lan7 inet manual
+    pre-up ifconfig $IFACE up
+    post-down ifconfig $IFACE down
+
+auto lan8
+iface lan8 inet manual
+    pre-up ifconfig $IFACE up
+    post-down ifconfig $IFACE down
+
+#auto optical3
+#iface optical3 inet manual
+#    pre-up ifconfig $IFACE up
+#    post-down ifconfig $IFACE down
+
+#auto optical4
+#iface optical4 inet manual
+#    pre-up ifconfig $IFACE up
+#    post-down ifconfig $IFACE down

@@ -1,0 +1,3 @@
+file drivers/net/dsa/mv88e6xxx/chip.c +p
+func mv88e6xxx_read =_
+func mv88e6xxx_write =_
